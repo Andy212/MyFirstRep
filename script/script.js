@@ -15,3 +15,5 @@ console.log(addExpenses);
 console.log(deposit);
 console.log(mission);
 console.log(period);
+
+console.log(period);
