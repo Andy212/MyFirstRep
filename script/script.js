@@ -1,11 +1,11 @@
 
 
-let money = 10;
-let income = 4;
-let addExpenses = 5;
-let deposit = 6;
-let mission = 7;
-let period = 8;
+let money;
+let income;
+let addExpenses;
+let deposit;
+let mission;
+let period;
 
 alert('переходи на темную сторону');
 console.log('У нас есть печеньки');
