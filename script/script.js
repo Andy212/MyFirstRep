@@ -15,7 +15,6 @@ console.log(typeof deposit);
 console.log(addExpenses.length);
 console.log('Период равен ' + period +' месяцев' );
 console.log('Цель заработать '+ mission + ' Долларов');
-console.log(addExpenses.toLowerCase());
-console.log(addExpenses.split(','))
+console.log(addExpenses.toLowerCase().split(','));
 
 console.log(budgetDay);
