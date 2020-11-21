@@ -1,18 +1,21 @@
 
 
-let money;
-let income;
-let addExpenses;
-let deposit;
-let mission;
-let period;
+let money = 1000;
+let income = 'разработка приложений';
+let addExpenses = 'КОММУНАЛКА, ВОДА, ГАЗ';
+let deposit = true;
+let mission = 50000;
+let period = 6;
+let budgetDay = money / 30;
 
-alert('переходи на темную сторону');
-console.log('У нас есть печеньки');
-console.log( money);
-console.log(income);
-console.log(addExpenses);
-console.log(deposit);
-console.log(mission);
-console.log(period);
+console.log(typeof money);
+console.log(typeof income);
+console.log(typeof deposit);
 
+console.log(addExpenses.length);
+console.log('Период равен ' + period +' месяцев' );
+console.log('Цель заработать '+ mission + ' Долларов');
+console.log(addExpenses.toLowerCase());
+console.log(addExpenses.split(','))
+
+console.log(budgetDay);
