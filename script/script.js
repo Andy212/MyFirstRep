@@ -20,12 +20,13 @@ let amount1 = +prompt('Во сколько это обойдётся?');
 let expenses2 = prompt('Введите обязательную статью расходов?');
 let amount2 = +prompt('Во сколько это обойдётся?');
 
-const showTypeOf = function(){
-    console.log(typeof money);
-    console.log(typeof income);
-    console.log(typeof deposit);
+const showTypeOf = function(data){
+    console.log(data, typeof (data));
 }
-showTypeOf();
+
+showTypeOf(money);
+showTypeOf(income);
+showTypeOf(deposit);
 
 const getExpensesMonth = function(){
     expenses = amount1 + amount2;
@@ -57,6 +58,14 @@ budgetDay = accumulatedMonth/ 30;
 console.log('Бюджет на день составляет: ' + Math.floor(budgetDay) + ' долларов');
 
 const getStatusIncome = function(){
-    console.log(income);
-}
-getStatusIncome();
+    if (budgetDay > 1200){
+        return ('У вас высокий уровень дохода');
+    } else if (budgetDay > 600 && budgetDay < 1200){
+        return ('У вас средний уровень дохода');
+    }  else if (budgetDay < 600 && budgetDay > 0){
+        return ('К сожалению у вас уровень дохода ниже среднего');
+    }   else if (budgetDay < 0){
+        return ('Что то пошло не так');
+    }
+};
+console.log(getStatusIncome());
