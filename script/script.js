@@ -2,7 +2,7 @@
 let isNumber = function(n){
     return !isNaN(parseFloat(n)) && isFinite(n)
 };
-let money = 0;
+let money;
 let start = function()  {
         do{
             money = prompt('Ваш месячный доход?');
@@ -27,21 +27,20 @@ let appData = {
     mission: 50000,
     period: 3,
     asking: function(){
-        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-            appData.addExpenses = addExpenses.toLowerCase().split(',');
+            appData.addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую').toLowerCase().split(',');
             appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
-        let sum = 0;
+        let sum;
         let expenses1 =[];
 
             for(let i = 0; i<2; i++){
                 expenses1[i] = prompt('Введите обязательную статью расходов?');
                 
                 do{
-                    sum = +prompt('Во сколько это обойдётся?');
+                    sum = prompt('Во сколько это обойдётся?');
                 }
                 while (!isNumber(sum));
-                appData.expenses[expenses1[i]] = sum;
+                appData.expenses[expenses1[i]] = parseInt(sum);
             }
     },
 
@@ -49,7 +48,6 @@ let appData = {
         for(let key in appData.expenses){
             appData.expensesMonth += appData.expenses[key];
         }
-        return appData.expensesMonth;
         
     },
 
@@ -66,7 +64,6 @@ let appData = {
         return ('Цель не будет достигнута ');
         }
         
-        
     },
 
     getStatusIncome: function(){
@@ -82,13 +79,17 @@ let appData = {
     }
 };
 appData.asking();
+appData.getExpensesMonth();
 appData.getBudget();
+appData.getTargetMonth();
+appData.getStatusIncome();
+
 
 
 for(let key in appData){
     console.log('Наша программа включает в себя данные: ' + appData[key])
 };
 
-console.log(' Общие расходы за месяц составляют: ' + appData.getExpensesMonth() + ' долларов');
+console.log(' Общие расходы за месяц составляют: ' + appData.expensesMonth  + ' долларов');
 console.log(appData.getTargetMonth());
 console.log(appData.getStatusIncome());
