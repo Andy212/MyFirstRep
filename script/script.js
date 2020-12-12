@@ -1,7 +1,9 @@
 'use strict';
 let isNumber = function(n){
-    return !isNaN(parseFloat(n)) && isFinite(n)
+    return !isNaN(parseFloat(n)) && isFinite(n);
 };
+
+
 let money;
 let start = function()  {
         do{
@@ -34,8 +36,9 @@ let appData = {
                 let itemIncome;
                 let cashIncome;
                 do{
-                itemIncome = prompt('Какой у вас есть дополнительный заработок?', 'Таксую');
-                }while(isNumber(itemIncome));
+                    itemIncome = prompt('Какой у вас есть дополнительный заработок?', 'Таксую');
+
+                }while(itemIncome === undefined || itemIncome === null || itemIncome.trim() === '' ||  isNumber(itemIncome));
                 
 
                 do{
@@ -45,6 +48,9 @@ let appData = {
 
                 appData.income[itemIncome] = cashIncome;
             }
+
+            console.log(appData.itemIncome);
+
             appData.addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую').toLowerCase().split(',');
 
             let addExpensesStr = ' ';
@@ -64,7 +70,8 @@ let appData = {
             for(let i = 0; i<2; i++){
                 do{
                 expenses1[i] = prompt('Введите обязательную статью расходов?');
-                }while(isNumber(expenses1));
+
+                }while(expenses1[i] === undefined || expenses1[i] === null || expenses1[i].trim() === '' || isNumber(expenses1[i]));
 
                 do{
                     sum = prompt('Во сколько это обойдётся?');
@@ -132,9 +139,9 @@ appData.getStatusIncome();
 appData.getInfoDeposit();
 
 
-for(let key in appData){
-    console.log('Наша программа включает в себя данные: ' + appData[key])
-};
+//for(let key in appData){
+  //  console.log('Наша программа включает в себя данные: ' + appData[key])
+//};
 
 console.log(' Общие расходы за месяц составляют: ' + appData.expensesMonth  + ' долларов');
 console.log(appData.getTargetMonth());
