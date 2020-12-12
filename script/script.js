@@ -39,12 +39,14 @@ let appData = {
                     itemIncome = prompt('Какой у вас есть дополнительный заработок?', 'Таксую');
 
                 }while(itemIncome === undefined || itemIncome === null || itemIncome.trim() === '' ||  isNumber(itemIncome));
-                
+
 
                 do{
                     cashIncome = prompt('Сколько вы на этом зарабатываете?' , 10000);
                 }
                 while (!isNumber(cashIncome));
+
+                console.log(cashIncome * 17);
 
                 appData.income[itemIncome] = cashIncome;
             }
@@ -147,3 +149,66 @@ console.log(' Общие расходы за месяц составляют: ' 
 console.log(appData.getTargetMonth());
 console.log(appData.getStatusIncome());
 console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
+
+
+const run = document.getElementById('start');
+console.log (run);
+
+const inc = document.getElementsByTagName('button')[0];
+console.log(inc);
+
+const expens = document.getElementsByTagName('button')[1];
+console.log(expens);
+
+const check = document.querySelector('#deposit-check');
+console.log(check);
+
+const incomeFields = document.querySelectorAll('.additional_income-item');
+console.log(incomeFields);
+
+const bDay = document.getElementsByClassName('result-total')[1];
+console.log(bDay);
+
+const exMonth = document.getElementsByClassName('result-total')[2];
+console.log(exMonth);
+
+const adIncome = document.getElementsByClassName('result-total')[3];
+console.log(adIncome);
+
+const adEx = document.getElementsByClassName('result-total')[4];
+console.log(adEx);
+
+const inPer = document.getElementsByClassName('result-total')[5];
+console.log(inPer);
+
+const tMonth = document.getElementsByClassName('result-total')[6];
+console.log(tMonth);
+
+
+
+const bMonth = document.querySelector('.budget_month-value');
+console.log(bMonth);
+
+const tAmount = document.querySelector('.target-amount');
+console.log(tAmount);
+
+const perSelect = document.querySelector('.period-select');
+console.log(perSelect);
+
+const adExMas = document.querySelector('.additional_expenses-item');
+console.log(adExMas);
+
+const adExTitle = document.querySelector('div.expenses-items input');
+console.log(adExTitle);
+
+const adExSum = document.querySelector('.expenses-amount');
+console.log(adExSum);
+
+const adInTitle = document.querySelector('div.income-items input');
+console.log(adInTitle);
+
+const adInSum = document.querySelector('.income-amount');
+console.log(adInSum);
+
+const MonthAmount = document.querySelector('.salary-amount');
+console.log(MonthAmount);
