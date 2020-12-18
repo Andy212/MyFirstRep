@@ -226,6 +226,8 @@ let appData = {
     clickSubmit:function(){
         if(monthAmount.value.length > 2) {
             start.disabled = false; 
+        }else{
+            start.disabled = true;
         }
 
     }
