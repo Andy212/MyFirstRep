@@ -261,6 +261,7 @@ let appData = {
         this.enabledInput();
         this.clearField(); 
         appData.clearData();
+
     },
 
     enabledInput:function(){
@@ -301,21 +302,22 @@ let appData = {
         
     },
     clearData:function(){
+    
+        this.budgetDay = 0,
+            this.budgetMonth = 0,
+            this.expensesMonth = 0,
+            this.budget = 0,
+            this.income = {},
+            this.incomeMonth = 0,
+            this.addIncome = [],
+            this.expenses = {},
+            this.addExpenses = [],
+            this.deposit = false,
+            this.percentDeposit = 0,
+            this.moneyDeposit = 0;
+            
+    },
 
-        for(let key in this){
-
-            if(typeof key === Number){
-                this[key] = 0;
-                console.log(key);
-            }else if(typeof key === Object){
-                this[key] = {}
-            }else if(typeof key === Array){
-                this[key] = []
-            }else if(typeof key === String){
-                this[key] = ''
-            }
-        }
-    }
 
 };
 
