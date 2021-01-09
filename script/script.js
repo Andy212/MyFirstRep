@@ -99,7 +99,7 @@ let appData = {
         this.budget = +monthAmount.value;
 
         console.log(this);
-       
+
         this.getExpenses();
         this.getIncome();
         this.getExpensesMonth();
@@ -152,21 +152,27 @@ let appData = {
         };
     },
     getExpenses: function(){
+        expensesItems = document.querySelectorAll('.expenses-items');
         expensesItems.forEach(function(item){
             let itemExpenses = item.querySelector('.expenses-title').value;
             let cashExpenses = item.querySelector('.expenses-amount').value;
             if(itemExpenses !== '' && cashExpenses !== ''){
                 appData.expenses[itemExpenses] =  parseInt(cashExpenses);
             }
+            
         });
     },
     getIncome: function(){
-        incomeItem.forEach(function(item){
+        incomeItem = document.querySelectorAll('.income-items');
+        incomeItem.forEach(function(item){        
             let itemIncome = item.querySelector('.income-title').value;
             let cashIncome = item.querySelector('.income-amount').value;
             if(itemIncome !== '' && cashIncome !== ''){
                 appData.income[itemIncome] = parseInt(cashIncome);
+                console.log(appData.income)
+                
             }
+            
         });
 
         for(let key in this.income){
@@ -262,7 +268,6 @@ let appData = {
         this.clearField(); 
         appData.clearData();
         this.rangeClear();
-
         
     },
 
@@ -304,8 +309,7 @@ let appData = {
         
     },
     clearData:function(){
-    
-        this.budgetDay = 0,
+            this.budgetDay = 0,
             this.budgetMonth = 0,
             this.expensesMonth = 0,
             this.budget = 0,
@@ -317,6 +321,7 @@ let appData = {
             this.deposit = false,
             this.percentDeposit = 0,
             this.moneyDeposit = 0;
+
             
     },
 
