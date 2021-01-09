@@ -261,7 +261,9 @@ let appData = {
         this.enabledInput();
         this.clearField(); 
         appData.clearData();
+        this.rangeClear();
 
+        
     },
 
     enabledInput:function(){
@@ -318,6 +320,11 @@ let appData = {
             
     },
 
+    rangeClear:function(){
+        let g = document.querySelector('.period input[type=range]');
+        g.value = 1;
+        periodAmount.innerHTML= g.value;
+    }
 
 };
 
