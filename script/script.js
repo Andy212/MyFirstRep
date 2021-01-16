@@ -1,6 +1,5 @@
 'use strict';
-let isNumber = function(n){
-    return !isNaN(parseFloat(n)) && isFinite(n);
+const isNumber = (n) =>{ !isNaN(parseFloat(n)) && isFinite(n);
 };
 
 
