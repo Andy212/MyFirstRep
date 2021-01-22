@@ -4,17 +4,17 @@ window.addEventListener('DOMContentLoaded', function(){
 
 
     // Timer
-    function countTimer(deadline){
-        let timerHours = document.querySelector('#timer-hours'),
+   const countTimer = (deadline) =>{
+        const timerHours = document.querySelector('#timer-hours'),
             timerMinutes = document.querySelector('#timer-minutes'),
-            timerSeconds = document.querySelector('#timer-seconds'),
-            idInterval,
+            timerSeconds = document.querySelector('#timer-seconds');
+        let idInterval,
             seconds,
             minutes,
             hours;
 
-        function getTimeRemaining(){
-            let dateStop = new Date(deadline).getTime(),
+   const getTimeRemaining = () =>{
+            const dateStop = new Date(deadline).getTime(),
                 dateNow = new Date().getTime(),
                 timeRemaining = (dateStop - dateNow) / 1000;
                 seconds = Math.floor(timeRemaining % 60),
@@ -29,8 +29,8 @@ window.addEventListener('DOMContentLoaded', function(){
                 
         }
 
-        function updateClock(){
-            let timer = getTimeRemaining();
+    const updateClock = () =>{
+            const timer = getTimeRemaining();
 
             timerHours.textContent = timer.hours;
             timerMinutes.textContent = timer.minutes;
@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', function(){
         }
 
         updateClock();
-    }
+    };
 
     countTimer('23 january 2021');
 
