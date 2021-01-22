@@ -37,18 +37,17 @@ window.addEventListener('DOMContentLoaded', function(){
             timerSeconds.textContent = timer.seconds;
         
             
-            if(timer.timeRemaining > 0){
-            idInterval = setInterval(updateClock, 1000);
-            }else{
+            if(timer.timeRemaining < 0){
                 clearInterval(idInterval);
                 timerHours.textContent = '00';
                 timerMinutes.textContent = '00';
                 timerSeconds.textContent = '00';
-            }  
             
-        }
-
-        updateClock();
+            }
+            
+        };
+        
+        idInterval = setInterval(updateClock, 1000);
     };
 
     countTimer('23 january 2021');
