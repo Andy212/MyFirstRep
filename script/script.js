@@ -56,24 +56,22 @@ window.addEventListener('DOMContentLoaded', function(){
 
     //menu
     const toggleMenu = () => {
-        const handlerMenu = () => {
+        const btnMenu = document.querySelector('.menu'),
+			menu = document.querySelector('menu');
+
+		const handlerMenu = () => {
 			const target = event.target;
-
-			const displayMenu = () => {
-				document.querySelector('menu').classList.toggle('active-menu');
-			};
-
-			if (target.closest('.menu') ||
-				(!target.closest('menu') &&
-					document.querySelector('menu').classList.contains('active-menu'))) {
-				displayMenu();
-			} else if (target.closest('menu')&& target.closest('[href^="#"]')) {
-				displayMenu();
-
+			if (target.closest('.menu')) {
+				menu.classList.toggle('active-menu');
+			} else if (target !== menu && target.closest('[href^="#"]')) {
+				menu.classList.toggle('active-menu');
 			}
-		};
 
-		document.body.addEventListener('click', handlerMenu);
+		};
+        
+        btnMenu.addEventListener('click', handlerMenu);
+		menu.addEventListener('click', handlerMenu);
+
     };
 
     toggleMenu();
@@ -81,6 +79,7 @@ window.addEventListener('DOMContentLoaded', function(){
     const togglePpup = () =>{
         const popup = document.querySelector('.popup'),
             popupBtn = document.querySelectorAll('.popup-btn');
+           
 
             const screenWidth = document.documentElement.clientWidth;
 
