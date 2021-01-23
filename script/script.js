@@ -86,7 +86,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 const start = Date.now(),
                     timer = setInterval(function() {
                     let timePassed = Date.now() - start;
-                    popupContent.style.left = timePassed / 2 + 'px';
+                    popupContent.style.top = timePassed / 27 + '%';
                     if (timePassed > 1500){
                     clearInterval(timer);}
             
