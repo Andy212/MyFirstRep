@@ -78,7 +78,10 @@ window.addEventListener('DOMContentLoaded', function(){
     const togglePpup = () =>{
         const popup = document.querySelector('.popup'),
             popupBtn = document.querySelectorAll('.popup-btn');
-
+	let screenWidth = document.documentElement.clientWidth;
+            
+            window.addEventListener('resize', ()=>{
+                screenWidth = document.documentElement.clientWidth;});
 
             const screenWidth = document.documentElement.clientWidth;
 
@@ -98,13 +101,8 @@ window.addEventListener('DOMContentLoaded', function(){
 
         popupBtn.forEach((elem) =>{
             elem.addEventListener('click', ()=>{
-                
-                if(screenWidth > 768){
-                    popleft();  
-                }else{
-                    popupContent.style.left = 10;
-                    popup.style.display = 'block';
-                }
+                popup.style.display = 'block';
+                if(screenWidth > 768) {popleft();}
             });
 
         });
