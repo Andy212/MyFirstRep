@@ -79,8 +79,10 @@ window.addEventListener('DOMContentLoaded', function(){
         const popup = document.querySelector('.popup'),
             popupBtn = document.querySelectorAll('.popup-btn');
 
-
-            const screenWidth = document.documentElement.clientWidth;
+            let screenWidth = document.documentElement.clientWidth;
+            
+            window.addEventListener('resize', ()=>{
+                screenWidth = document.documentElement.clientWidth;});
 
             const popupContent = document.querySelector('.popup-content');
             const popleft = function(){
@@ -98,13 +100,8 @@ window.addEventListener('DOMContentLoaded', function(){
 
         popupBtn.forEach((elem) =>{
             elem.addEventListener('click', ()=>{
-                
-                if(screenWidth > 768){
-                    popleft();  
-                }else{
-                    popupContent.style.left = 10;
-                    popup.style.display = 'block';
-                }
+                popup.style.display = 'block';
+                if(screenWidth > 768) {popleft();}
             });
 
         });
@@ -269,7 +266,36 @@ window.addEventListener('DOMContentLoaded', function(){
         portfolioDots.children[0].classList.add('dot-active');
     };
 
-    dotsAdd();
-    slider();
+    const setCommandImg = () => {
+		const newCommand = document.querySelector('#command .row');
+
+		const hidenPhotos = (event) => {
+			const target = event.target;
+
+			if (target.classList.contains('command__photo')) {
+                const secondSrc = target.src;
+				target.src = target.dataset.img;
+				target.dataset.img = secondSrc;
+			}
+		};
+
+		newCommand.addEventListener('mouseover', hidenPhotos);
+		newCommand.addEventListener('mouseout', hidenPhotos);
+	};
+
+
+    const calcFields = () => {
+        const inputFields = document.querySelector('.calc-block');
+        
+        console.log(inputFields)
+        inputFields.addEventListener('input', (event) =>{
+            event.target.value = event.target.value.replace(/\D/g, '');
+        })
+    }
+
     
+    dotsAdd();
+    calcFields();
+    slider();
+    setCommandImg();
 });
