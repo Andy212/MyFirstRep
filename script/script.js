@@ -294,60 +294,66 @@ window.addEventListener('DOMContentLoaded', function(){
             calcCount = document.querySelector('.calc-count'),
             totalValue = document.getElementById('total');
 
-    const countSum = () =>{
-        let total = 0,
-        countValue = 1,
-        dayValue = 10;
-        const typeValue = calcType.options[calcType.selectedIndex].value,       
-            squareValue = +calcSquare.value;
+        const countSum = () =>{
+            let total = 0,
+            countValue = 1,
+            dayValue = 10;
+        
+            let typeValue = calcType.value;
+            
+            let  squareValue = calcSquare.value;
 
-        if(calcCount.value > 1){
-            countValue += (calcCount.value - 1) / 10;
+            if(calcCount.value > 1){
+                countValue += (calcCount.value - 1) / 10;
+            }
+        
+            if(calcDay.value && calcDay.value < 5){
+                dayValue *= 2;
+            } else if (calcDay.value && calcDay.value < 10){
+                dayValue *= 1.5;
+            }
+
+            if(typeValue && squareValue){
+                total = price * typeValue * squareValue * countValue * dayValue;
+            }
+
+            totalValue.textContent = total;
+
         }
+        
+
+    calcBlock.addEventListener('change', (event) => {
+        const target = event.target;
+        if(target.matches('select') || target.matches('input')){
     
-        if(calcDay.value && calcDay.value < 5){
-            dayValue *= 2;
-        } else if (calcDay.value && calcDay.value < 10){
-            dayValue *= 1.5;
+            
+            countSum();
         }
+        
+    })
 
-        if(typeValue && squareValue){
-            total = price * typeValue * squareValue * countValue * dayValue;
-        }
-
-        totalValue.textContent = total;
-
-
+    const calcFields = () => {
+        const calcBlockInput = document.querySelectorAll('.calc-block input');
+        
+        calcBlockInput.forEach((e) => {
+            e.addEventListener('input', (event) =>{
+                event.target.value = event.target.value.replace(/\D/g, '');
+            })
+        })
 
     }
         
-
-        calcBlock.addEventListener('change', (event) => {
-            const target = event.target;
-            if(target.matches('select') || target.matches('input')){
-
-                
-                countSum();
-            }
-            
-        })
-
-        const calcFields = () => {
-            
-            calcBlock.addEventListener('input', (event) =>{
-                event.target.value = event.target.value.replace(/\D/g, '');
-            })
-        }
-        calcFields();
-
-
-
-
+    calcFields();
     }
+    
 
+
+
+    
     
     dotsAdd();
     calc(100);
     slider();
     setCommandImg();
+    
 });
