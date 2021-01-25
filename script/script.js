@@ -286,8 +286,6 @@ window.addEventListener('DOMContentLoaded', function(){
 
     const calcFields = () => {
         const inputFields = document.querySelector('.calc-block');
-        
-        console.log(inputFields)
         inputFields.addEventListener('input', (event) =>{
             event.target.value = event.target.value.replace(/\D/g, '');
         })
