@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded', function(){
         idInterval = setInterval(updateClock, 1000);
     };
 
-    countTimer('23 january 2021');
+    countTimer('30 january 2021');
 
 
     //menu
@@ -348,25 +348,13 @@ window.addEventListener('DOMContentLoaded', function(){
     
     const sendForm = () => {
 
-            const postData = (body) => new Promise((resolve, reject) => {
-                const request = new XMLHttpRequest();
-    
-                request.addEventListener('readystatechange', () => {
-                    if (request.readyState !== 4) {
-                        return;
-                    }
-    
-                    if (request.status === 200) {
-                        resolve();
-                    } else {
-                        reject(request.status);
-                    }
-                });
-    
-                request.open('POST', './server.php');
-                request.setRequestHeader('Content-Type', 'application/json');
-                request.send(JSON.stringify(body));
-            });
+        const postData = (body) => fetch('./server.php', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(body)
+		});
 
 		const clearInput = (idForm) => {
 			const form = document.getElementById(idForm);
@@ -413,8 +401,6 @@ window.addEventListener('DOMContentLoaded', function(){
 			statusMessage.style.cssText = 'font-size: 2rem; color: #fff';
 
 			form.addEventListener('submit', event => {
-				const formData = new FormData(form);
-				const body = {};
 
 				event.preventDefault();
 
@@ -422,12 +408,9 @@ window.addEventListener('DOMContentLoaded', function(){
 
 				form.appendChild(statusMessage);
 
-				formData.forEach((val, key) => {
-					body[key] = val;
-				});
-
-				postData(body)
-					.then(() => {
+				postData(Object.fromEntries(new FormData(form)))
+					.then(response => {
+						if (response.status !== 200) throw new Error(`Status network ${request.status}`);
 						showStatus('success');
 						clearInput(idForm);
 					})
