@@ -52,11 +52,13 @@ const sendForm = () => {
             
         };
 
+
         statusMessage.style.cssText = 'font-size: 2rem; color: #fff';
 
         form.addEventListener('submit', event => {
             event.preventDefault();
-            
+
+
             showStatus('load');
 
             form.appendChild(statusMessage);
