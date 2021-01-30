@@ -9,14 +9,18 @@ import dotsAdd from './modules/dotsAdd';
 import calc from './modules/calc';
 import setCommandImg from './modules/setCommandImg';
 import sendForm from './modules/sendForm';
+import maskPhone from './modules/maskPhone';
 
 // Timer
 countTimer('30 january 2021');
 //menu
+maskPhone('.form-phone')
 toggleMenu();
 //popup
 togglePopup();
 //Tabs
+//sendForm
+sendForm();
 tabs();
 //add dots
 dotsAdd();
@@ -26,5 +30,3 @@ slider();
 calc(100);
 //setCommandImg
 setCommandImg();
-//sendForm
-sendForm();

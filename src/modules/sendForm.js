@@ -29,12 +29,13 @@ const sendForm = () => {
         if (target.matches('.mess')) {
             target.value = target.value.replace(/[^а-яё0-9 ,.]/gi, '');
         }
+
+        
     };
 
     const mainProcess = (idForm) => {
         const form = document.getElementById(idForm);
         const statusMessage = document.createElement('div');
-
         const showStatus = (status) => {
             const statusList = {
                 load: {
@@ -48,17 +49,21 @@ const sendForm = () => {
                 }
             };
             statusMessage.textContent = statusList[status].message;
+            
         };
 
         statusMessage.style.cssText = 'font-size: 2rem; color: #fff';
 
         form.addEventListener('submit', event => {
-
             event.preventDefault();
-
+            
             showStatus('load');
 
             form.appendChild(statusMessage);
+
+            setTimeout(() => {
+                statusMessage.remove();
+            }, 6000);
 
             postData(Object.fromEntries(new FormData(form)))
                 .then(response => {
@@ -81,3 +86,4 @@ const sendForm = () => {
 };
 
 export default sendForm;
+
